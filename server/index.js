@@ -2,6 +2,7 @@ var express = require('express')
 var app = express()
 var multer = require('multer')
 var mongoose = require('mongoose')
+var bodyParser = require('body-parser')
 
 // mongoose methods
 
