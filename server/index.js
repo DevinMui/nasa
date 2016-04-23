@@ -81,3 +81,7 @@ app.post('/pictures', upload.array('upload', 20), function(req, res){
 		doc.save()
 	})
 })
+
+app.listen(3000, function () {
+  console.log('running on port 3000');
+});
