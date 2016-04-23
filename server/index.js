@@ -12,8 +12,8 @@ mongoose.connect(mongoose_url);
 var conn = mongoose.connection
 
 var flightSchema = new mongoose.Schema({
-	long: Float,
-	lat: Float,
+	long: Number,
+	lat: Number,
 	reached: Boolean,
 	pictures: Array
 })
