@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+
+	</head>
+	<body>
+		<h1>This is flight <%= doc._id %></h1>
+		<h3>Data</h3>
+		<ul>
+			<li>Longitude: <%= doc.long %></li>
+			<li>Latitude: <%= doc.lat %></li>
+			<li>Reached?: <%= doc.reached %></li>
+			<li>Soil Moisture Value: <%= doc.soilMoisture %></li>
+			<li>Humidity: <%= doc.humidity %></li>
+			<li>Temperature: <%= doc.temperature %></li>
+			<li>Pressure: <%= doc.pressure %></li>
+			<li>Barometic Temperature: <%= doc.baroTemp %></li>
+		</ul>
+		<h3>Pictures</h3>
+		<img src="1.jpg">
+		<% for(int i = 0; i < doc.pictures.length; i++){ %>
+			<img src="<% doc.pictures[i] %>">
+		<% }%>
+	</body>
+</html>

@@ -18,6 +18,10 @@ var flightSchema = new mongoose.Schema({
 	reached: Boolean,
 	pictures: Array,
 	soilMosture: Number,
+	humidity: Number,
+	temperature: Number,
+	pressure: Number,
+	baroTemp: Number
 },
 {
 	timestamps: true
@@ -45,6 +49,8 @@ var upload = multer({storage: storage})
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 // routes
 
@@ -53,7 +59,7 @@ app.get('/flight/:id', function(req, res){
 	var id = req.params.id
 	Flight.findOne({ _id: id }, function(err, doc){
 		if(!err)
-			res.send(doc)
+			res.render("flight", "doc": doc)
 		else
 			res.send(err)
 	})
