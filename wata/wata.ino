@@ -6,7 +6,11 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+	// api request
   int moistureVal = analogRead(moistureSensor);
   Serial.print(moistureVal);
   Serial.println();
+	// check if reached == true
+	// put a delay here for like 20s or something
 }

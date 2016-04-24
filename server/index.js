@@ -48,6 +48,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // routes
 
+// this one is supposed to be more readable
+app.get('/:id', function(req, res){
+	var id = req.params.id
+	Flight.findOne({ _id: id }, function(err, doc){
+		if(!err)
+			res.send(doc)
+		else
+			res.send(err)
+	})
+})
+
 app.get('/latest', function(req, res){
 	Flight.findOne({}, {}, { sort: { 'createdAt': -1 } }, function(err, doc){ // gets latest one
 		if(!err)
