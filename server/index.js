@@ -89,7 +89,11 @@ app.post('/flight', function(req, res){
 		lat: req.body.lat,
 		reached: false,
 		pictures: [],
-		soilMosture: -1
+		soilMosture: -1,
+		humidity: -1,
+		temperature: -1,
+		pressure: -1,
+		baroTemp: -1
 	})
 	flight.save(function(err, flight){
 		if(err)
