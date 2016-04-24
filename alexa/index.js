@@ -45,11 +45,11 @@ Hello.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, se
 Hello.prototype.intentHandlers = {
     // register custom intent handlers
     "FlyDrone": function (intent, session, response) {
-        response.intent.latitude, response.intent.longitude
+        //response.intent.latitude, response.intent.longitude
         var options = {
-            url: 'https://api.github.com/repos/request/request',
+            url: 'http://nasa.devinmui.xyz/flight',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "long": response.intent.longitude, "lat": response.intent.latitude })
+            body: JSON.stringify({ "long": intent.slots.Longitude.value, "lat": intent.slots.Latitude.value })
         };
         request.post(options, function(err, res, body){
             if(!err)

@@ -17,7 +17,8 @@ var flightSchema = new mongoose.Schema({
 	lat: Number,
 	reached: Boolean,
 	pictures: Array,
-	soilMosture: Number
+	soilMosture: Number,
+	timestamps: true
 })
 
 var Flight = mongoose.model('Flight', flightSchema)
