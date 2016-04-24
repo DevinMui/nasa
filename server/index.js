@@ -18,6 +18,8 @@ var flightSchema = new mongoose.Schema({
 	reached: Boolean,
 	pictures: Array,
 	soilMosture: Number,
+},
+{
 	timestamps: true
 })
 
