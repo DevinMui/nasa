@@ -59,7 +59,6 @@ NSString *longitudeData;
         }];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(longitudeData);
         });
     });
 }

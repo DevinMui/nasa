@@ -32,6 +32,8 @@
 @implementation DJIRootViewController
 
 NSData *latest;
+NSString *longitude;
+NSString *latitude;
 
 - (void)startTimedTask
 {
@@ -60,9 +62,12 @@ NSData *latest;
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager GET:URLString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
-            if(responseObject == latest){
+            if(responseObject != latest){
+                
+                
                 // fly the drone
-                // get responseObject.long, responseObject.lat
+                longitude = responseObject[@"long"];
+                latitude = responseObject[@"lat"];
             }
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"Error: %@", error);
@@ -90,27 +95,6 @@ NSData *latest;
     
     [self initUI];
 }
-- (IBAction)takeOffBtn:(id)sender {
-    DJIFlightController* fc = [DemoComponentHelper fetchFlightController];
-    if (fc) {
-        [fc takeoffWithCompletion:^(NSError * _Nullable error) {
-            if (error) {
-                ShowResult(@"Takeoff Error:%@", error.localizedDescription);
-            }
-            else
-            {
-                ShowResult(@"Takeoff Succeeded.");
-            }
-        }];
-    }
-    else
-    {
-        ShowResult(@"Component Not Exist");
-    }
-    
-    
-}
-
 
 - (void)initUI
 {
