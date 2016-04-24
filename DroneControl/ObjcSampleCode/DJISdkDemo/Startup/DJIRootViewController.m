@@ -111,6 +111,7 @@ NSData *latest;
     
 }
 
+
 - (void)initUI
 {
     self.title = @"DJI iOS SDK Sample";

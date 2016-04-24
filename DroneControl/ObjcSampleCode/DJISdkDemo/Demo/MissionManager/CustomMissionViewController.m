@@ -12,6 +12,9 @@
 #import <DJISDK/DJISDK.h>
 #import "DemoUtility.h"
 #import "CustomMissionViewController.h"
+#import "FCGeneralControlViewController.h"
+#import "DemoComponentHelper.h"
+#import "DemoAlertView.h"
 
 #define ONE_METER_OFFSET (0.00000901315)
 
@@ -38,7 +41,69 @@
     [self.prepareButton setEnabled:CLLocationCoordinate2DIsValid(self.homeLocation)];
 }
 
+-(void)takeOff {
+    
+    DJIFlightController* fc = [DemoComponentHelper fetchFlightController];
+    if (fc) {
+        [fc takeoffWithCompletion:^(NSError * _Nullable error) {
+            if (error) {
+                ShowResult(@"Takeoff Error:%@", error.localizedDescription);
+            }
+            else
+            {
+                ShowResult(@"Takeoff Succeeded.");
+            }
+        }];
+    }
+    else
+    {
+        ShowResult(@"Component Not Exist");
+    }
+
+}
+
+/*-(DJIMissionStep*)landing {
+    DJIFlightController* fc = [DemoComponentHelper fetchFlightController];
+    if (fc) {
+        [fc autoLandingWithCompletion:^(NSError * _Nullable error) {
+            if (error) {
+                ShowResult(@"Land Error:%@", error.localizedDescription);
+            }
+            else
+            {
+                ShowResult(@"Land Succeeded.");
+            }
+        }];
+    }
+    else
+    {
+        ShowResult(@"Component Not Exist");
+    }
+    
+    return fc;
+}*/
+
+-(void) landing {
+    DJIFlightController* fc = [DemoComponentHelper fetchFlightController];
+    if (fc) {
+        [fc autoLandingWithCompletion:^(NSError * _Nullable error) {
+            if (error) {
+                ShowResult(@"Land Error:%@", error.localizedDescription);
+            }
+            else
+            {
+                ShowResult(@"Land Succeeded.");
+            }
+        }];
+    }
+    else
+    {
+        ShowResult(@"Component Not Exist");
+    }
+}
+
 -(DJIMission*) initializeMission {
+    [self takeOff];
     if (self.steps == nil) {
         self.steps = [[NSMutableArray alloc] init];
     }
@@ -46,31 +111,35 @@
     // Step 1: take off from the ground
     DJIMissionStep* step = [[DJITakeoffStep alloc] init];
     [self.steps addObject:step];
-    
+    /*
     // Step 2: reset the gimbal to horizontal angle
     DJIGimbalAttitude atti = {0, 0 ,0};
     step = [[DJIGimbalAttitudeStep alloc] initWithAttitude:atti];
     [self.steps addObject:step];
     
-    // Step 3: shoot 3 photos with 5 seconds interval between each
-    step = [[DJIShootPhotoStep alloc] initWithPhotoCount:3 timeInterval:5.0];
-    [self.steps addObject:step];
-    
     // Step 4: start recording video
     step = [[DJIRecordVideoStep alloc] initWithStartRecordVideo];
-    [self.steps addObject:step];
+    [self.steps addObject:step];*/
     
     // Step 5: start a waypoint mission while the aircraft is still recording the video
     step = [self initializeWaypointMissonStep];
     [self.steps addObject:step];
     
     // Step 6: go to the target location
-    step = [[DJIGoToStep alloc] initWithCoordinate:CLLocationCoordinate2DMake(self.homeLocation.latitude + 40 * ONE_METER_OFFSET, self.homeLocation.longitude + 50 * ONE_METER_OFFSET) altitude:40.0];
+    step = [[DJIGoToStep alloc] initWithCoordinate:CLLocationCoordinate2DMake(self.homeLocation.latitude + 10 * ONE_METER_OFFSET, self.homeLocation.longitude + 10 * ONE_METER_OFFSET) altitude:10.0];
     [self.steps addObject:step];
-    
+    /*
     // Step 7: stop the recording when the waypoint mission is finished
     step = [[DJIRecordVideoStep alloc] initWithStopRecordVideo];
+    [self.steps addObject:step];*/
+    
+    step = [[DJIGoToStep alloc] initWithCoordinate:CLLocationCoordinate2DMake(self.homeLocation.latitude + 10 * ONE_METER_OFFSET, self.homeLocation.longitude + 10 * ONE_METER_OFFSET) altitude:5.0];
     [self.steps addObject:step];
+    
+    /*step = [self landing];
+    [self.steps addObject:step];*/
+    
+    //[self landing];
     
     // Step 8: go back home
     step = [[DJIGoHomeStep alloc] init];
@@ -79,6 +148,14 @@
     DJICustomMission* mission = [[DJICustomMission alloc] initWithSteps:self.steps];
     
     return mission; 
+}
+
+-(void) missionDidStart:(NSError *)error {
+    //[self takeOff];
+}
+
+-(void) missionDidStop {
+    [self landing];
 }
 
 -(DJIMissionStep*) initializeWaypointMissonStep {
