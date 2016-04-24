@@ -18,8 +18,8 @@
 		</ul>
 		<h3>Pictures</h3>
 		<img src="/1.jpg">
-		<% for(int i = 0; i < doc.pictures.length; i++){ %>
-
+		<% for(var i = 0; i < doc.pictures.length; i++){ %>
+			<img src="<%= doc.pictures[i] %>">
 		<% } %>
 	</body>
 </html>
