@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // routes
 
 app.get('/latest', function(req, res){
-	Flight.findOne({}, {}, { sort: { 'created_at': -1 } }, function(err, doc){ // gets latest one
+	Flight.findOne({}, {}, { sort: { 'createdAt': -1 } }, function(err, doc){ // gets latest one
 		if(!err)
 			res.send(doc)
 		else
@@ -101,7 +101,7 @@ app.post('/pictures', upload.array('upload', 20), function(req, res){
 	})
 })
 
-app.listen(3000, function () {
+app.listen(80, function () {
   console.log('running on port 3000');
 });
 

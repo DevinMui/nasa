@@ -1,0 +1,21 @@
+running on port 3000
+running on port 3000
+
+/home/ubuntu/nasa/server/node_modules/mongoose/lib/schema.js:556
+    throw new TypeError('Undefined type `' + name + '` at `' + path +
+          ^
+TypeError: Undefined type `undefined` at `timestamps`
+  Did you try nesting Schemas? You can only nest using refs or arrays.
+    at Function.Schema.interpretAsType (/home/ubuntu/nasa/server/node_modules/mongoose/lib/schema.js:556:11)
+    at Schema.path (/home/ubuntu/nasa/server/node_modules/mongoose/lib/schema.js:464:29)
+    at Schema.add (/home/ubuntu/nasa/server/node_modules/mongoose/lib/schema.js:348:12)
+    at new Schema (/home/ubuntu/nasa/server/node_modules/mongoose/lib/schema.js:94:10)
+    at Object.<anonymous> (/home/ubuntu/nasa/server/index.js:15:20)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)
+    at startup (node.js:119:16)
+    at node.js:902:3
+running on port 3000
