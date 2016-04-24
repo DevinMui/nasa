@@ -107,6 +107,10 @@ app.post('/reached', function(req, res){
 	Flight.findOne({ _id: req.body.id }, function(err, doc){
 		doc.reached = true
 		doc.soilMosture = req.body.soilMosture
+		doc.humidity = req.body.humidity
+		doc.temperature = req.body.temperature
+		doc.pressure = req.body.pressure
+		doc.baroTemp = req.body.baroTemp
 		doc.save()
 	})
 })
