@@ -59,7 +59,7 @@ app.get('/flight/:id', function(req, res){
 	var id = req.params.id
 	Flight.findOne({ _id: id }, function(err, doc){
 		if(!err)
-			res.render("flight", "doc": doc)
+			res.render("flight", {"doc": doc})
 		else
 			res.send(err)
 	})
