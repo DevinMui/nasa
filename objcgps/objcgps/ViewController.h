@@ -12,7 +12,5 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic,retain) CLLocationManager *locationManager;
-
 @end
 

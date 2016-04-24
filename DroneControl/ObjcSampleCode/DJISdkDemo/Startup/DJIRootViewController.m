@@ -19,8 +19,6 @@
 
 @interface DJIRootViewController ()
 
-- (IBAction)takeOffBtn:(id)sender;
-
 @property(nonatomic, weak) DJIBaseProduct* product;
 @property (weak, nonatomic) IBOutlet UILabel *productConnectionStatus;
 @property (weak, nonatomic) IBOutlet UILabel *productModel;
@@ -64,8 +62,7 @@ NSString *latitude;
             NSLog(@"JSON: %@", responseObject);
             if(responseObject != latest){
                 
-                
-                // fly the drone
+                //fly drone
                 longitude = responseObject[@"long"];
                 latitude = responseObject[@"lat"];
             }
