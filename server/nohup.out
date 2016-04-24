@@ -19,3 +19,4 @@ TypeError: Undefined type `undefined` at `timestamps`
     at startup (node.js:119:16)
     at node.js:902:3
 running on port 3000
+running on port 3000

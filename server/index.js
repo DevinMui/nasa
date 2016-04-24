@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // routes
 
 // this one is supposed to be more readable
-app.get('/:id', function(req, res){
+app.get('/flight/:id', function(req, res){
 	var id = req.params.id
 	Flight.findOne({ _id: id }, function(err, doc){
 		if(!err)
