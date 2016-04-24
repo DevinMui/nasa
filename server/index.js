@@ -111,7 +111,7 @@ app.post('/pictures', upload.array('upload', 20), function(req, res){
 	Flight.findOne({ _id: req.body.id }, function(err, doc){
 		var pic = doc.pictures
 		for(var i=0;i<req.files.length;i++){
-			pic += "public/" + req.files[i].filename
+			pic += "/" + req.files[i].filename
 		}
 		doc.pictures = pic
 		doc.save()
