@@ -8,7 +8,7 @@ Build a drone that collects information about the environment for farmers and su
 
 You can either use Alexa, iOS app, or web server to call the drone to a specific destination where it will land and plant the soil sensor into the ground. The soil sensor will then send JSON data back to the server where it will be saved. The iOS app/web server will be able to show the data in a more human readable format. The drone flies back to the original destination and lands.
 
-[NASA SpaceApps Video Presentation](https://youtu.be/amSe2ljWaQ8?t=1m40s)
+[NASA SpaceApps Award Ceremony](https://youtu.be/amSe2ljWaQ8?t=1m36s)
 [School Presentation](https://docs.google.com/presentation/d/1kzU7ss0bI7V-H4xewemgdc0ty74xs3NXN1tIdO1CHqs/edit?usp=sharing)
 
 ### TODO
