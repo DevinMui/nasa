@@ -46,11 +46,11 @@ This was our first time using many new technologies. We had to use the DJI iOS S
 
 ### TODO
 
--[ ] make android app (optional)
--[x] make ios app ~ 2 - 5 hours
--[x] make hardware hack ~ 1 hour
--[x] make alexa app ~ 3 - 5 hours (optional)
--[x] server ~ 15 - 30 minutes
+- [ ] make android app (optional)
+- [x] make ios app ~ 2 - 5 hours
+- [x] make hardware hack ~ 1 hour
+- [x] make alexa app ~ 3 - 5 hours (optional)
+- [x] server ~ 15 - 30 minutes
 
 ### Contributors
 
