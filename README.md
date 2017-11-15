@@ -1,5 +1,7 @@
 # NASA SpaceApps Hackathon Challenge
 
+![Cropcircles](farams.JPG)
+
 ### Project
 
 Build a drone that collects information about the environment for farmers and such to reduce water usage and spread awareness about the drought in California. Please ignore the swear words in the commit messages. We built this at a hackathon and we were really tired. Won the NASA SpaceApps Best App/Tech Idea prize!
